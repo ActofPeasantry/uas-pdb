@@ -33,9 +33,6 @@ class Penduduk extends Model
     {
         return $this->belongsTo('App\Models\Kewarganegaraan', 'keluarga_id',);
     }
-    
-    public function kewarganegaraan()
-    {
-        return $this->belongsTo('App\Models\Kewarganegaraan', 'keluarga_id',);
-    }
+
+   
 }
