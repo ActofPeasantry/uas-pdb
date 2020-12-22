@@ -13,6 +13,7 @@
                         <ul class="nav">
                             <li><a href="{{route('kartu_keluarga')}}" class="">Kartu Keluarga</a></li>
                             <li><a href="{{route('penduduk')}}" class="">Penduduk</a></li>
+                            <li><a href="{{route('laporan')}}" class="">Laporan</a></li>
                         </ul>
                     </div>
                 </li>

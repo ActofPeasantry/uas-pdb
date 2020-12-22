@@ -18,10 +18,13 @@ class Penduduk extends Model
         'agama',
         'jenis_kelamin',
         'status_keluarga',
+        'status_pernikahan',
         'ayah',
         'ibu',
         'keluarga_id',
         'kewarganegaraan_id',
+        'level_pendidikan_id',
+        'pekerjaan_id',
     ];
 
     public function kartu_keluarga()
@@ -33,6 +36,14 @@ class Penduduk extends Model
     {
         return $this->belongsTo('App\Models\Kewarganegaraan', 'keluarga_id',);
     }
+    
+    public function level_pendidikan()
+    {
+        return $this->belongsTo('App\Models\LevelPendidikan', 'level_pendidikan_id',);
+    }
 
-   
+    public function Pekerjaan()
+    {
+        return $this->belongsTo('App\Models\Pekerjaan', 'pekerjaan_id',);
+    }
 }

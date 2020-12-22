@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Nagari;
 use App\Models\Jorong;
 use App\Models\KartuKeluarga;
+use App\Models\Penduduk;
 
 class KartuKeluargaController extends Controller
 {
@@ -65,8 +66,15 @@ class KartuKeluargaController extends Controller
     public function show($id)
     {
         $kk = KartuKeluarga::all()->where('id', $id)->first();
-        dd($kk);
-        return view('kartu_keluarga.show', compact('kk'));
+        $nagari = Nagari::all();
+        $jorong = Jorong::all();
+        $penduduk = Penduduk::all();
+
+        foreach($jorong as $j){
+            $option[] = ['data-tag' => $j->nagari_id];
+        }
+        // dd($kk);
+        return view('kartu_keluarga.show', compact('kk', 'nagari', 'jorong', 'option', 'penduduk'));
     }
 
     /**
@@ -77,7 +85,16 @@ class KartuKeluargaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kk = KartuKeluarga::all()->where('id', $id)->first();
+        $nagari = Nagari::all();
+        $jorong = Jorong::all();
+
+        foreach($jorong as $j){
+            $option[] = ['data-tag' => $j->nagari_id];
+        }
+
+        // dd($kk);
+        return view('kartu_keluarga.edit', compact('kk', 'nagari', 'jorong'));
     }
 
     /**
@@ -89,7 +106,12 @@ class KartuKeluargaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kk = KartuKeluarga::find($id);
+        $data=$request->all();
+        $kk->update($data);
+
+        return redirect()->route('kartu_keluarga');
+        // dd($kk);
     }
 
     /**
@@ -100,6 +122,8 @@ class KartuKeluargaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kk = KartuKeluarga::find($id);
+        $kk->destroy($id);
+        return redirect()->back();
     }
 }

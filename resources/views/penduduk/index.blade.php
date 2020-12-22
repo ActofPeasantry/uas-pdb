@@ -10,13 +10,12 @@
             </div>
         </div>
         <div class="panel-body">
-            <button class="btn btn-primary">Tambah Penduduk</button>
+            <a class="btn btn-primary" href="{{route('penduduk.create')}}">Tambah Penduduk</a>
             <br>
             <br>
             <table id='example' class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Nama</th>
                         <th>NIK</th>
                         <th>No. Kartu Keluarga</th>
@@ -24,18 +23,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($penduduk as $p)    
                     <tr>
-                        <td>1</td>
-                        <td>nama</td>
-                        <td>nik</td>
-                        <td>kk</td>
+                        <td>{{$p->nama}}</td>
+                        <td>{{$p->nik}}</td>
+                        <td>{{$p->kartu_keluarga->no}}</td>
                         <td class="text-center">
-                            <button class="btn btn-info">detail</button>
-                            <button class="btn btn-warning">edit</button>
-                            <button class="btn btn-danger">hapus</button>
+                            <a class="btn btn-info" href="{{route('penduduk.show', [$p->id])}}">detail</a>
+                            <a class="btn btn-warning" href="{{route('penduduk.edit', [$p->id])}}">edit</a>
+                            <a class="btn btn-danger" href="{{route('penduduk.destroy', [$p->id])}}">hapus</a>
                         </td>
-                        
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

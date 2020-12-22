@@ -22,6 +22,7 @@ class CreatePendudukTable extends Migration
             $table->string('agama');
             $table->string('jenis_kelamin');
             $table->string('status_keluarga');
+            $table->string('status_pernikahan');
             $table->string('ayah');
             $table->string('ibu');
             $table->timestamps();

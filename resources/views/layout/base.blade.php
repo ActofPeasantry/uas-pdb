@@ -54,7 +54,19 @@
 	<script src="{{asset('assets/vendor/chartist/js/chartist.min.js')}}"></script>
 	<script src="{{asset('assets/scripts/klorofil-common.js')}}"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	
+
+	<script>
+		$(document).ready(function() {
+			$('#kartu_keluarga').DataTable();
+		} );
+	</script>
+
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
 
 	@yield('javascript')
 	<script>

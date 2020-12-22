@@ -35,31 +35,32 @@
         </div>
     </div>
     <div class="panel-body">
-        <table id='example' class="display" style="width:100%">
+        <table id='show_table' class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>No</th>
                     <th>Nama</th>
                     <th>NIK</th>
                     <th>tempat_lahir</th>
                     <th>agama</th>
                     <th>jenis_kelamin</th>
-                    {{-- <th class="text-center">Aksi</th> --}}
+                    <th class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    {{-- @foreach ($kartu_keluarga as $kk)    
-                        <td>{{$kk->no}}</td>
-                        <td>{{$kk->jorong->nama}}</td>
-                        <td>{{$kk->tanggal_pencatatan}}</td>
+                @foreach ($penduduk as $p)  
+                    @if ($p->kartu_keluarga->no == $kk->no)    
+                    <tr>
+                        <td>{{$p->nama}}</td>
+                        <td>{{$p->nik}}</td>
+                        <td>{{$p->tempat_lahir}}</td>
+                        <td>{{$p->agama}}</td>
+                        <td>{{$p->jenis_kelamin}}</td>
                         <td class="text-center">
-                            <a class="btn btn-info" href="{{route('kartu_keluarga.show', [$kk->id])}}">detail</a>
-                            <a class="btn btn-warning" href="{{route('kartu_keluarga.show', [$kk->id])}}">edit</a>
-                            <a class="btn btn-danger">hapus</a>
+                            <a class="btn btn-info" href="{{route('penduduk.show', [$p->id])}}">detail</a>
                         </td>
-                    @endforeach --}}
-                </tr>
+                    </tr>
+                    @endif  
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -69,7 +70,7 @@
 @section('javascript')
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#show_table').DataTable();
         } );
     </script>
 @endsection

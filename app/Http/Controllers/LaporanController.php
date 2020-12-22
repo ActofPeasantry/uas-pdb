@@ -7,12 +7,13 @@ use App\Models\Nagari;
 use App\Models\Jorong;
 use App\Models\KartuKeluarga;
 
+use Carbon\Carbon;
 use App\Models\Penduduk;
 use App\Models\Kewarganegaraan;
 use App\Models\LevelPendidikan;
 use App\Models\Pekerjaan;
 
-class PendudukController extends Controller
+class LaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,9 +27,7 @@ class PendudukController extends Controller
         $nagari = Nagari::all();
         $jorong = Jorong::all();
 
-        // dd($penduduk);
-
-        return view('penduduk.index', compact('penduduk','kartu_keluarga', 'nagari', 'jorong'));
+        return view('laporan.index', compact('penduduk','kartu_keluarga', 'nagari', 'jorong'));
     }
 
     /**
@@ -38,15 +37,7 @@ class PendudukController extends Controller
      */
     public function create()
     {
-        $penduduk = Penduduk::all();
-        $kartu_keluarga = KartuKeluarga::all();
-        $nagari = Nagari::all();
-        $jorong = Jorong::all();
-        $kewarganegaraan = Kewarganegaraan::all();
-        $level_pendidikan = LevelPendidikan::all();
-        $pekerjaan = Pekerjaan::all();
-
-        return view('penduduk.create', compact('penduduk', 'kartu_keluarga', 'nagari', 'jorong', 'kewarganegaraan', 'level_pendidikan', 'pekerjaan'));
+        //
     }
 
     /**
@@ -57,10 +48,7 @@ class PendudukController extends Controller
      */
     public function store(Request $request)
     {
-        // dd('blin');
-        Penduduk::create($request->all());
-
-        return redirect()->route('penduduk');
+        //
     }
 
     /**
@@ -71,9 +59,7 @@ class PendudukController extends Controller
      */
     public function show($id)
     {
-        $penduduk = Penduduk::all()->where('id', $id)->first();
-        // dd($penduduk);
-        return view('penduduk.show', compact('penduduk'));
+        //
     }
 
     /**
@@ -84,17 +70,7 @@ class PendudukController extends Controller
      */
     public function edit($id)
     {
-        $penduduk = Penduduk::all()->where('id', $id)->first();
-        $kartu_keluarga = KartuKeluarga::all();
-        $nagari = Nagari::all();
-        $jorong = Jorong::all();
-        $kewarganegaraan = Kewarganegaraan::all();
-        $level_pendidikan = LevelPendidikan::all();
-        $pekerjaan = Pekerjaan::all();
-
-        // dd($penduduk);
-
-        return view('penduduk.edit', compact('penduduk', 'kartu_keluarga', 'nagari', 'jorong', 'kewarganegaraan', 'level_pendidikan', 'pekerjaan'));
+        //
     }
 
     /**
@@ -106,8 +82,7 @@ class PendudukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Penduduk::find($id)->update($request->all());
-        return redirect()->route('penduduk');
+        //
     }
 
     /**
@@ -118,7 +93,6 @@ class PendudukController extends Controller
      */
     public function destroy($id)
     {
-        Penduduk::destroy($id);
-        return redirect()->back();
+        //
     }
 }

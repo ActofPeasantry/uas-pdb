@@ -52,25 +52,3 @@
 
 </div
 
-<div>
-    @section('javascript')
-        <script type="text/javascript">
-            $('#nagari').on('click', function() {
-                $('#jorong').prop('disabled', false);
-                var selected = $(this).val(); //fakultas value
-
-                $("#jorong option").each(function(item){
-                    var element =  $(this) ;
-                    if (element.data("tag") != selected){
-                        element.hide() ; 
-                    }
-                    else{
-                        element.show();
-                    }
-                }) ; 
-                
-                $("#jorong").val($("#jorong option:visible:first").val());
-            });
-        </script>
-    @endsection
-</div>
